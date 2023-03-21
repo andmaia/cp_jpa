@@ -1,13 +1,21 @@
 package Entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="TB_TRACK")
 public class Track {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long Track_ID;
 	@Column(name="nm_track")
@@ -27,7 +35,7 @@ public class Track {
 	@Column(name="ds_released")
 	private String track_released;
 	
-	
+
 	public Track() {
 		
 	}

@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import Entities.Customer;
+import Entities.Genre;
 import Entities.Purchase;
 import Entities.Track;
 import jakarta.persistence.EntityManager;
@@ -43,15 +44,21 @@ public class Application {
 		Date data = new Date();
 
 		
-	
+		Genre genre = new Genre();
+		genre.setId(null);
+		genre.setGenreName("Nighmare");
 	
 		em.getTransaction().begin();
+		
+		
 		em.persist(customer);
 		em.persist(track);
+		em.persist(genre);
 		
 		
 		Track t =em.find(track.getClass(), 1);
 		Customer c=em.find(customer.getClass(), 1);
+		Genre g=em.find(genre.getClass(), 1);
 		
 		
 		Purchase purchase = new Purchase();
@@ -59,10 +66,6 @@ public class Application {
 		purchase.setPayment_method("Crédito");
 	    purchase.setTrack(t);
 		purchase.setCustomer(c);
-		
-		em.persist(purchase);
-		
-		em.getTransaction().commit();
 		
 		
 	}	

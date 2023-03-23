@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -7,6 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -34,6 +38,13 @@ public class Track {
 	private String track_songwriters;
 	@Column(name="ds_released")
 	private String track_released;
+	
+	@ManyToMany
+	@JoinTable(name="tb_genre_track",
+			joinColumns = @JoinColumn(name="track_id"),
+			inverseJoinColumns = @JoinColumn(name="genre_id")
+			)
+	private List<Genre> genres= new ArrayList<Genre>();
 	
 
 	public Track() {
@@ -144,6 +155,18 @@ public class Track {
 	public void setTrack_released(String track_released) {
 		this.track_released = track_released;
 	}
+
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+	
+	
 	
 	
 }

@@ -11,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -46,7 +45,12 @@ public class Track {
 			)
 	private List<Genre> genres= new ArrayList<Genre>();
 	
-
+	@ManyToMany(mappedBy = "tracks")
+	private List<Album> albums = new ArrayList<Album>();
+	
+	@ManyToMany(mappedBy = "tracks")
+	private List<Artist> artists = new ArrayList<Artist>();
+	
 	public Track() {
 		
 	}

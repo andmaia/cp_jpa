@@ -1,10 +1,16 @@
 package Entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +25,12 @@ public class Artist {
 	@Column(name="tp_artist")
 	private String artistType;
 	
+	@ManyToMany
+	@JoinTable(name="tb_track_artist",
+			joinColumns = @JoinColumn(name="artist_id"),
+			inverseJoinColumns = @JoinColumn(name="track_id")
+			)
+	private List<Track> tracks = new ArrayList<Track>();
 	
 	public Artist() {
 		

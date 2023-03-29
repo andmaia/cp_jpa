@@ -26,4 +26,9 @@ public class GenreDao {
 		genre=em.merge(genre);
 		this.em.remove(genre);
 	}
+	
+	public Genre get(Long id) {
+		Genre genre=em.find(Genre.class, id);
+		return genre;
+	}
 }

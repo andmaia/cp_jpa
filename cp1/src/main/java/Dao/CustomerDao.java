@@ -24,4 +24,9 @@ public class CustomerDao {
 		this.em.remove(customer);
 	}
 	
+	public Customer get(Long id) {
+		Customer customer=em.find(Customer.class, id);
+		return customer;
+	}
+	
 }

@@ -33,20 +33,24 @@ public class Purchase {
 	@Column(name="tp_payment")
 	private String payment_method;
 	
+	private java.util.Date date;
 	
+	private java.util.Date time;
+	
+
 	
 	public Purchase() {
 		
 	}
 
 
-	public Purchase(Long id, Track track,Customer customer,String payment_method) {
+	public Purchase(Long id, Track track,Customer customer,String payment_method, java.util.Date date, java.util.Date time) {
 		super();
 		this.track = track;
 		this.customer = customer;
 		this.payment_method = payment_method;
-		//this.date = date;
-		//this.time = time;
+		this.date = date;
+		this.time = time;
 		this.id=id;
 	}
 	
@@ -86,8 +90,7 @@ public class Purchase {
 		this.payment_method = payment_method;
 	}
 
-/*
-	public java.util.Date getDate() {
+   public java.util.Date getDate() {
 		return date;
 	}
 
@@ -105,7 +108,7 @@ public class Purchase {
 	public void setTime(java.util.Date time) {
 		this.time = time;
 	}
-	*/
+	
 	
 	
 	

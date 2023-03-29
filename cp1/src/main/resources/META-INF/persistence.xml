@@ -12,7 +12,7 @@
             <property name="javax.persistence.jdbc.password" value="110803" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
             <property name="javax.persistence.schema-generation.database.action"
-                      value="drop-and-create"/>
+                      value="none"/>
             <!--<property name="javax.persistence.sql-load-script-source"
                       value="META-INF/database/load.sql"/>-->
             <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>

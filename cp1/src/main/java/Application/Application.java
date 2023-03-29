@@ -3,6 +3,9 @@ package Application;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Dao.ArtistDao;
+import Dao.GenreDao;
+import Entities.Artist;
 import Entities.Customer;
 import Entities.Genre;
 import Entities.Purchase;
@@ -42,31 +45,27 @@ public class Application {
 		track.setTrack_songwriters("Mario");
 		
 		Date data = new Date();
-
+		
+		Artist artist= new Artist();
+		artist.setId(null);
+		artist.setArtistName("Andrew");
+		artist.setArtistType("Canta pagode");
 		
 		Genre genre = new Genre();
 		genre.setId(null);
 		genre.setGenreName("Nighmare");
-	
+		
+		ArtistDao ad= new ArtistDao(em);
+		GenreDao gd=new GenreDao(em);
+		
 		em.getTransaction().begin();
+		Artist a=ad.getArtist(2l);
+		ad.atualizar(a);
+		a.setArtistName("vasco");
+		em.getTransaction().commit();
 		
 		
-		em.persist(customer);
-		em.persist(track);
-		em.persist(genre);
-		
-		
-		Track t =em.find(track.getClass(), 1);
-		Customer c=em.find(customer.getClass(), 1);
-		Genre g=em.find(genre.getClass(), 1);
-		
-		
-		Purchase purchase = new Purchase();
-		purchase.setId(null);
-		purchase.setPayment_method("Crédito");
-	    purchase.setTrack(t);
-		purchase.setCustomer(c);
-		
+
 		
 	}	
 

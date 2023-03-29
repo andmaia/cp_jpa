@@ -1,5 +1,6 @@
 package Dao;
 
+import Entities.Genre;
 import Entities.RecordLabel;
 import jakarta.persistence.EntityManager;
 
@@ -22,6 +23,11 @@ public class RecordLabelDao {
 	public void excluir(RecordLabel recordLabel) {
 		recordLabel = em.merge(recordLabel);
 		this.em.remove(recordLabel);
+	}
+	
+	public RecordLabel get(Long id) {
+		RecordLabel recordLabel=em.find(RecordLabel.class, id);
+		return recordLabel;
 	}
 	
 	

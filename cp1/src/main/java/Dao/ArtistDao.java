@@ -23,5 +23,9 @@ public class ArtistDao {
 		this.em.remove(artist);
 	}
 	
-	
+	public Artist getArtist(Long id) {
+		Artist artist = em.find(Artist.class, id);
+		return artist;
+		
+	}
 }

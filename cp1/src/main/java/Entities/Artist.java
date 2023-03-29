@@ -60,6 +60,19 @@ public class Artist {
 	public void setArtistType(String artistType) {
 		this.artistType = artistType;
 	}
+
+	public List<Track> getTracks() {
+		return tracks;
+	}
+
+	public void setTracks(List<Track> tracks) {
+		this.tracks = tracks;
+	}
+	
+	public void InserirArtistTrack(Track track) {
+		this.tracks.add(track);
+		track.getArtists().add(this);
+	}
 	
 	
 	

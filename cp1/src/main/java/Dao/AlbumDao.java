@@ -17,6 +17,7 @@ public class AlbumDao {
 		em.persist(album);
 	}
 	
+
 	public void atualizar(Album album) {
 		em.merge(album);
 	}

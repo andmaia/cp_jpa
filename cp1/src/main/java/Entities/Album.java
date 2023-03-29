@@ -109,5 +109,23 @@ public class Album {
 	}
 	
 	
+	public List<Track> getTracks() {
+		return tracks;
+	}
+
+
+
+	public void setTracks(List<Track> tracks) {
+		this.tracks = tracks;
+	}
+
+
+
+	public void insetTrackAlbums(Track track) {
+		this.tracks.add(track);
+		track.getAlbums().add(this);
+	}
+	
+	
 	
 }

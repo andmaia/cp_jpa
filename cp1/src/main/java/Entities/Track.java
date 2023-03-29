@@ -169,8 +169,31 @@ public class Track {
 	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
 	}
+
+
+	public List<Album> getAlbums() {
+		return albums;
+	}
+
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
+	}
+
+
+	public List<Artist> getArtists() {
+		return artists;
+	}
+
+
+	public void setArtists(List<Artist> artists) {
+		this.artists = artists;
+	}
 	
-	
+	public void adicionarTrackGenre(Genre genre) {
+		this.genres.add(genre);
+		genre.getTracks().add(this);
+	}
 	
 	
 }

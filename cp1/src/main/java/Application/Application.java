@@ -3,8 +3,11 @@ package Application;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.hibernate.dialect.temptable.TemporaryTableHelper.TemporaryTableDropWork;
+
 import Dao.ArtistDao;
 import Dao.GenreDao;
+import Dao.TrackDao;
 import Entities.Artist;
 import Entities.Customer;
 import Entities.Genre;
@@ -13,6 +16,7 @@ import Entities.Track;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import oracle.jdbc.oracore.TDSPatch;
 
 public class Application {
 
@@ -21,7 +25,7 @@ public class Application {
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("a");
 		
 		EntityManager em=emf.createEntityManager();
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+	//	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		Customer customer = new Customer();
 		customer.setId(null);
 		customer.setEmail("andrewrian@198@gmail.com");
@@ -57,15 +61,17 @@ public class Application {
 		
 		ArtistDao ad= new ArtistDao(em);
 		GenreDao gd=new GenreDao(em);
+		TrackDao td= new TrackDao(em);
 		
 		em.getTransaction().begin();
-		Artist a=ad.getArtist(2l);
-		ad.atualizar(a);
-		a.setArtistName("vasco");
+			Track t=td.get(1l);
+			Genre g=gd.get(21l);
+			
+			
+			t.adicionarTrackGenre(g);
 		em.getTransaction().commit();
-		
-		
-
+		em.clear();
+		emf.close();
 		
 	}	
 
